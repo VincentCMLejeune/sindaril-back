@@ -7,6 +7,7 @@ import {
 import type { Env } from './config/env.js';
 import corsPlugin from './plugins/cors.js';
 import prismaPlugin from './plugins/prisma.js';
+import swaggerPlugin from './plugins/swagger.js';
 import routes from './routes/index.js';
 
 export async function buildApp(env: Env) {
@@ -21,6 +22,7 @@ export async function buildApp(env: Env) {
 
   await app.register(corsPlugin, { env });
   await app.register(prismaPlugin, { env });
+  await app.register(swaggerPlugin);
   await app.register(routes);
 
   return app;
